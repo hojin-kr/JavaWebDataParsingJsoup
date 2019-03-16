@@ -3,23 +3,23 @@ package com.hojin.java_web_data_parsing_jsoup;
 public class FormLeague_Rank {
 
     //순위, 팀명, 경기수, 승점, 승, 무, 패, 득점, 실점, 득실차 : 10개 항목
-    private short rank;
+    private int rank;
     private String team;
-    private short game_count;
-    private short win_score;
-    private short win;
-    private short draw;
-    private short lose;
-    private short get_point;
-    private short lose_point;
-    private short diff_point;
+    private int game_count;
+    private int win_score;
+    private int win;
+    private int draw;
+    private int lose;
+    private int get_point;
+    private int lose_point;
+    private int diff_point;
 
 
-    public void setRank(short rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 
-    public short getRank() {
+    public int getRank() {
         return rank;
     }
 
@@ -31,69 +31,69 @@ public class FormLeague_Rank {
         this.team = team;
     }
 
-    public short getGame_count() {
+    public int getGame_count() {
         return game_count;
     }
 
-    public void setGame_count(short game_count) {
+    public void setGame_count(int game_count) {
         this.game_count = game_count;
     }
 
-    public short getWin_score() {
+    public int getWin_score() {
         return win_score;
     }
 
-    public void setWin_score(short win_score) {
+    public void setWin_score(int win_score) {
         this.win_score = win_score;
     }
 
-    public short getWin() {
+    public int getWin() {
         return win;
     }
 
-    public void setWin(short win) {
+    public void setWin(int win) {
         this.win = win;
     }
 
-    public short getDraw() {
+    public int getDraw() {
         return draw;
     }
 
-    public void setDraw(short draw) {
+    public void setDraw(int draw) {
         this.draw = draw;
     }
 
-    public short getLose() {
+    public int getLose() {
         return lose;
     }
 
-    public void setLose(short lose) {
+    public void setLose(int lose) {
         this.lose = lose;
     }
 
-    public short getGet_point() {
+    public int getGet_point() {
         return get_point;
     }
 
 
-    public void setGet_point(short get_point) {
+    public void setGet_point(int get_point) {
         this.get_point = get_point;
     }
 
 
-    public short getLose_point() {
+    public int getLose_point() {
         return lose_point;
     }
 
-    public void setLose_point(short lose_point) {
+    public void setLose_point(int lose_point) {
         this.lose_point = lose_point;
     }
 
-    public short getDiff_point() {
+    public int getDiff_point() {
         return diff_point;
     }
 
-    public void setDiff_point(short diff_point) {
+    public void setDiff_point(int diff_point) {
         this.diff_point = diff_point;
     }
 }
