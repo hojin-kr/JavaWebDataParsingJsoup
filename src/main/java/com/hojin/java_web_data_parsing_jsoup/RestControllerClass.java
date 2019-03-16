@@ -23,10 +23,10 @@ public class RestControllerClass {
         return new FormLeagueInfo("primera");
     }
     //분데스리가
-    @RequestMapping("football/rank/bundaesliga")
-    public FormLeagueInfo bundaesligaLeagueInfo(){
+    @RequestMapping("football/rank/bundesliga")
+    public FormLeagueInfo bundesligaLeagueInfo(){
 
-        return new FormLeagueInfo("bundaesliga");
+        return new FormLeagueInfo("bundesliga");
     }
     //세리에 A
     @RequestMapping("football/rank/seria")
@@ -40,10 +40,10 @@ public class RestControllerClass {
 
         return new FormLeagueInfo("ligue1");
     }
-    //에레디비시
-    @RequestMapping("football/rank/eredivise")
-    public FormLeagueInfo erediviseLeagueInfo(){
+    //에레디비
+    @RequestMapping("football/rank/eredivisie")
+    public FormLeagueInfo eredivisieLeagueInfo(){
 
-        return new FormLeagueInfo("eredivise");
+        return new FormLeagueInfo("eredivisie");
     }
 }
