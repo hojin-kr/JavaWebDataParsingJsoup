@@ -38,7 +38,7 @@ public class FormLeagueInfo {
     //Jsoup으로 웹 파싱하여 데이터 구성
     public void usingJsoupParsing(){
         try{
-            Document doc = Jsoup.connect("https://sports.news.naver.com/wfootball/record/index.nhn?category=epl").get();
+            Document doc = Jsoup.connect("https://sports.news.naver.com/wfootball/record/index.nhn?category=" + league_name).get();
             String TeamRecord = doc.toString();
             //split 메소드로 json 부분만 남김
             String[] TeamRecords = TeamRecord.split("jsonTeamRecord:");
@@ -54,36 +54,28 @@ public class FormLeagueInfo {
             JSONArray regularTeamRecordListArray = (JSONArray) jsonObject.get("regularTeamRecordList");
 
 
-            switch (league_name){
-                //프리미어리그
-                case "epl":
-                    for(int i=0;i<regularTeamRecordListArray.size();i++){
-                        //팀별로 스코어 점수 매칭 시키는 코드 작성
+            for(int i=0;i<regularTeamRecordListArray.size();i++) {
+                // 스코어 매칭 시키는 코드
 
-                        //순차 접근
-                        JSONObject eplRecordObject = (JSONObject) regularTeamRecordListArray.get(i);
+                //순차 접근
+                JSONObject RecordObject = (JSONObject) regularTeamRecordListArray.get(i);
 
-                        FormLeague_Rank league_rank = new FormLeague_Rank();
+                FormLeague_Rank league_rank = new FormLeague_Rank();
 
-                        league_rank.setRank(Integer.parseInt(eplRecordObject.get("rank").toString()));
-                        league_rank.setTeam(eplRecordObject.get("teamName").toString());
-                        league_rank.setGame_count(Integer.parseInt((eplRecordObject.get("gameCount").toString())));
-                        league_rank.setWin_score(Integer.parseInt(eplRecordObject.get("gainPoint").toString()));
-                        league_rank.setWin(Integer.parseInt(eplRecordObject.get("won").toString()));
-                        league_rank.setDraw(Integer.parseInt(eplRecordObject.get("drawn").toString()));
-                        league_rank.setLose(Integer.parseInt(eplRecordObject.get("lost").toString()));
-                        league_rank.setGet_point(Integer.parseInt(eplRecordObject.get("gainGoal").toString()));
-                        league_rank.setLose_point(Integer.parseInt(eplRecordObject.get("loseGoal").toString()));
-                        league_rank.setDiff_point(Integer.parseInt(eplRecordObject.get("goalGap").toString()));
+                league_rank.setRank(Integer.parseInt(RecordObject.get("rank").toString()));
+                league_rank.setTeam(RecordObject.get("teamName").toString());
+                league_rank.setGame_count(Integer.parseInt((RecordObject.get("gameCount").toString())));
+                league_rank.setWin_score(Integer.parseInt(RecordObject.get("gainPoint").toString()));
+                league_rank.setWin(Integer.parseInt(RecordObject.get("won").toString()));
+                league_rank.setDraw(Integer.parseInt(RecordObject.get("drawn").toString()));
+                league_rank.setLose(Integer.parseInt(RecordObject.get("lost").toString()));
+                league_rank.setGet_point(Integer.parseInt(RecordObject.get("gainGoal").toString()));
+                league_rank.setLose_point(Integer.parseInt(RecordObject.get("loseGoal").toString()));
+                league_rank.setDiff_point(Integer.parseInt(RecordObject.get("goalGap").toString()));
 
-                        league_ranks.add(league_rank);
-                    }
-                    break;
-                //라리가
-                case "primera":
-                    break;
-
+                league_ranks.add(league_rank);
             }
+
 
         }catch(Exception e){}
 

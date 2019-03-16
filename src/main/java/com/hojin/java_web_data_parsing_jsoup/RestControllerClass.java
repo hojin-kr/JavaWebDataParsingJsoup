@@ -16,4 +16,34 @@ public class RestControllerClass {
 
         return new FormLeagueInfo("epl");
     }
+    //라리가
+    @RequestMapping("football/rank/primera")
+    public FormLeagueInfo PrimeraLeagueInfo(){
+
+        return new FormLeagueInfo("primera");
+    }
+    //분데스리가
+    @RequestMapping("football/rank/bundaesliga")
+    public FormLeagueInfo bundaesligaLeagueInfo(){
+
+        return new FormLeagueInfo("bundaesliga");
+    }
+    //세리에 A
+    @RequestMapping("football/rank/seria")
+    public FormLeagueInfo seriaLeagueInfo(){
+
+        return new FormLeagueInfo("seria");
+    }
+    //리그1
+    @RequestMapping("football/rank/ligue1")
+    public FormLeagueInfo ligue1LeagueInfo(){
+
+        return new FormLeagueInfo("ligue1");
+    }
+    //에레디비시
+    @RequestMapping("football/rank/eredivise")
+    public FormLeagueInfo erediviseLeagueInfo(){
+
+        return new FormLeagueInfo("eredivise");
+    }
 }
