@@ -44,3 +44,33 @@ Document doc = Jsoup.connect("https://sports.news.naver.com/wfootball/record/ind
             //TeamRecords[0] = TeamRecords[0].replaceAll("\\\"","'");
             TeamRecords = TeamRecords[0].split(",\\\n");
 ~~~
+Jsoup의 get() 메소드로 타게 웹의 전체 구조를 받아와 작업합니다. 전체 구조에서 원하는 요소를 Jsoup에서 제공하는 다양하 선택자로 선택하 분리하려고 하였으나 네이버 스포츠 사이트의 리그 정보 테이블이 자바스크립으로 생성하도로 되어있고 Jsoup에서는 자바스크립트 해석이 안되서 자바스크립트 그대로 노출됨 따라서 DOM(문서객체모델)을 사용한 선택자 활용에 제약이 생김. 대안으로 split()과 replaceAll() 메소들 원하는 부분만 추출하여 데이터를 분리함
+
+### 각 데이터 원하는 응답 이름에 매칭
+~~~
+for(int i=0;i<regularTeamRecordListArray.size();i++) {
+                // 스코어 매칭 시키는 코드
+
+                //순차 접근
+                JSONObject RecordObject = (JSONObject) regularTeamRecordListArray.get(i);
+
+                FormLeague_Rank league_rank = new FormLeague_Rank();
+
+                league_rank.setRank(Integer.parseInt(RecordObject.get("rank").toString()));
+                league_rank.setTeam(RecordObject.get("teamName").toString());
+                league_rank.setGame_count(Integer.parseInt((RecordObject.get("gameCount").toString())));
+                league_rank.setWin_score(Integer.parseInt(RecordObject.get("gainPoint").toString()));
+                league_rank.setWin(Integer.parseInt(RecordObject.get("won").toString()));
+                league_rank.setDraw(Integer.parseInt(RecordObject.get("drawn").toString()));
+                league_rank.setLose(Integer.parseInt(RecordObject.get("lost").toString()));
+                league_rank.setGet_point(Integer.parseInt(RecordObject.get("gainGoal").toString()));
+                league_rank.setLose_point(Integer.parseInt(RecordObject.get("loseGoal").toString()));
+                league_rank.setDiff_point(Integer.parseInt(RecordObject.get("goalGap").toString()));
+
+                league_ranks.add(league_rank);
+            }
+~~~
+전체 스콩 데이터를 JSON 형태로 추출한 reqularTeamRecordListArray의 값을 각 이름에 맞게 저장함.
+
+   
+    
